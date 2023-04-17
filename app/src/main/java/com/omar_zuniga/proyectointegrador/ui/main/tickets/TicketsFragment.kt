@@ -1,19 +1,20 @@
 package com.omar_zuniga.proyectointegrador.ui.main.tickets
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.omar_zuniga.proyectointegrador.databinding.FragmentFirstBinding
+import com.omar_zuniga.proyectointegrador.R
+import com.omar_zuniga.proyectointegrador.databinding.FragmentTicketsBinding
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class TicketsFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentTicketsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,8 +24,7 @@ class TicketsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentTicketsBinding.inflate(inflater, container, false)
         return binding.root
 
     }

@@ -1,6 +1,7 @@
 package com.omar_zuniga.proyectointegrador.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -15,16 +16,17 @@ import android.widget.Toast
 import com.omar_zuniga.proyectointegrador.databinding.ActivityLoginBinding
 
 import com.omar_zuniga.proyectointegrador.R
+import com.omar_zuniga.proyectointegrador.extensions.afterTextChanged
+import com.omar_zuniga.proyectointegrador.ui.main.MainActivity
+import com.omar_zuniga.proyectointegrador.ui.main.MainActivity.Companion.EXTRA_NAME
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
-    private lateinit var binding: ActivityLoginBinding
+    private val binding: ActivityLoginBinding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val username = binding.username
@@ -56,13 +58,10 @@ class LoginActivity : AppCompatActivity() {
             if (loginResult.error != null) {
                 showLoginFailed(loginResult.error)
             }
-            if (loginResult.success != null) {
-                updateUiWithUser(loginResult.success)
+            loginResult.success?.let { success ->
+                updateUiWithUser(success)
+                goToMainActivity(success)
             }
-            setResult(Activity.RESULT_OK)
-
-            //Complete and destroy login activity once successful
-            finish()
         })
 
         username.afterTextChanged {
@@ -98,10 +97,14 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun goToMainActivity(model: LoggedInUserView) = Intent(this, MainActivity::class.java).apply {
+        putExtra(EXTRA_NAME, model.displayName)
+        startActivity(this)
+    }
+
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
-        // TODO : initiate successful logged in experience
         Toast.makeText(
             applicationContext,
             "$welcome $displayName",
@@ -112,19 +115,4 @@ class LoginActivity : AppCompatActivity() {
     private fun showLoginFailed(@StringRes errorString: Int) {
         Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
     }
-}
-
-/**
- * Extension function to simplify setting an afterTextChanged action to EditText components.
- */
-fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-    this.addTextChangedListener(object : TextWatcher {
-        override fun afterTextChanged(editable: Editable?) {
-            afterTextChanged.invoke(editable.toString())
-        }
-
-        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
-        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-    })
 }
