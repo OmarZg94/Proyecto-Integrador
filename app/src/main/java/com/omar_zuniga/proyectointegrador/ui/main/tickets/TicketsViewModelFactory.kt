@@ -1,24 +1,23 @@
-package com.omar_zuniga.proyectointegrador.ui.login
+package com.omar_zuniga.proyectointegrador.ui.main.tickets
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.omar_zuniga.proyectointegrador.MyApplication
+import com.omar_zuniga.proyectointegrador.data.AppDatabase
 import com.omar_zuniga.proyectointegrador.data.login.LoginDataSource
 import com.omar_zuniga.proyectointegrador.data.login.LoginRepository
+import com.omar_zuniga.proyectointegrador.data.tickets.TicketsRepository
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.
  * Required given LoginViewModel has a non-empty constructor
  */
-class LoginViewModelFactory : ViewModelProvider.Factory {
+class TicketsViewModelFactory(private val repository: TicketsRepository) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-            return LoginViewModel(
-                loginRepository = LoginRepository(
-                    dataSource = LoginDataSource()
-                )
-            ) as T
+        if (modelClass.isAssignableFrom(TicketsViewModel::class.java)) {
+            return TicketsViewModel(ticketsRepository = repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

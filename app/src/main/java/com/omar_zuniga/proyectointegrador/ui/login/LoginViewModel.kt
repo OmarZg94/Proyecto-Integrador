@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
-import com.omar_zuniga.proyectointegrador.data.LoginRepository
+import com.omar_zuniga.proyectointegrador.data.login.LoginRepository
 import com.omar_zuniga.proyectointegrador.data.Result
 
 import com.omar_zuniga.proyectointegrador.R

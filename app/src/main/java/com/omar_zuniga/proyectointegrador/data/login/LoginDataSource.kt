@@ -1,6 +1,7 @@
-package com.omar_zuniga.proyectointegrador.data
+package com.omar_zuniga.proyectointegrador.data.login
 
-import com.omar_zuniga.proyectointegrador.data.model.LoggedInUser
+import com.omar_zuniga.proyectointegrador.data.Result
+import com.omar_zuniga.proyectointegrador.data.login.model.LoggedInUser
 import java.io.IOException
 import java.lang.Exception
 
@@ -13,7 +14,7 @@ class LoginDataSource {
         return try {
             val fakeUser = LoggedInUser("test@uvm.com", "Omar Zúñiga")
             if (username == fakeUser.userId && password == "Azul3j0s@")
-                Result.Success(fakeUser) else Result.Error(Exception("Invalid credentials"))
+                Result.Success(fakeUser) else Result.Error()
         } catch (e: Throwable) {
             Result.Error(IOException("Error logging in", e))
         }

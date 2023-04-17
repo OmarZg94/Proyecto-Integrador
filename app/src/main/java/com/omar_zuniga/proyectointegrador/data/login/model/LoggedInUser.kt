@@ -1,4 +1,4 @@
-package com.omar_zuniga.proyectointegrador.data.model
+package com.omar_zuniga.proyectointegrador.data.login.model
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

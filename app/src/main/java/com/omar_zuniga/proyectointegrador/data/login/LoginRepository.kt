@@ -1,6 +1,7 @@
-package com.omar_zuniga.proyectointegrador.data
+package com.omar_zuniga.proyectointegrador.data.login
 
-import com.omar_zuniga.proyectointegrador.data.model.LoggedInUser
+import com.omar_zuniga.proyectointegrador.data.Result
+import com.omar_zuniga.proyectointegrador.data.login.model.LoggedInUser
 
 /**
  * Class that requests authentication and user information from the remote data source and
