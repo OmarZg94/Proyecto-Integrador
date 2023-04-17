@@ -16,5 +16,10 @@
     <!-- Strings used for tickets fragment -->
     <string name="my_tickets_upload">Mis tickets registrados</string>
     <string name="without_tickets_upload">Sin tickets registrados</string>
+    <!-- String used for new ticket fragment -->
+    <string name="select_date">Selecciona la fecha del pago</string>
+    <string name="without_select_date">Sin fecha seleccionada</string>
+    <string name="ticket_photo">Fotografía del ticket</string>
+    <string name="save_ticket">Guardar ticket</string>
 
 </resources>
