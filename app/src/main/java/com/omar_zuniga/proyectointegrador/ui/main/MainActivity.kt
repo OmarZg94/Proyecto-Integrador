@@ -11,6 +11,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.omar_zuniga.proyectointegrador.R
 import com.omar_zuniga.proyectointegrador.databinding.ActivityMainBinding
+import com.omar_zuniga.proyectointegrador.ui.main.add_ticket.AddTicketFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,5 +37,16 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (val fm = supportFragmentManager.findFragmentById(R.id.container)){
+            is AddTicketFragment -> fm.onPermissionsResult(requestCode)
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 }

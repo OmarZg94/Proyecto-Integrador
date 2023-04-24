@@ -9,8 +9,8 @@ import com.omar_zuniga.proyectointegrador.data.login.LoginRepository
 import com.omar_zuniga.proyectointegrador.data.tickets.TicketsRepository
 
 /**
- * ViewModel provider factory to instantiate LoginViewModel.
- * Required given LoginViewModel has a non-empty constructor
+ * ViewModel provider factory to instantiate TicketsViewModel.
+ * Required given TicketsViewModel has a non-empty constructor
  */
 class TicketsViewModelFactory(private val repository: TicketsRepository) : ViewModelProvider.Factory {
 

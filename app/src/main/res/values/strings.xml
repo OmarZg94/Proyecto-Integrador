@@ -18,8 +18,9 @@
     <string name="without_tickets_upload">Sin tickets registrados</string>
     <!-- String used for new ticket fragment -->
     <string name="select_date">Selecciona la fecha del pago</string>
-    <string name="without_select_date">Sin fecha seleccionada</string>
     <string name="ticket_photo">Fotografía del ticket</string>
     <string name="save_ticket">Guardar ticket</string>
+    <!-- Errors -->
+    <string name="e_permission_not_granted">Permissions not granted by the user.</string>
 
 </resources>
