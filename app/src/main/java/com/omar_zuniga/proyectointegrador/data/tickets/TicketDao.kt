@@ -18,4 +18,7 @@ interface TicketDao {
 
     @Query("SELECT * from ticket")
     fun selectAllTickets(): Flow<List<TicketEntity>>
+
+    @Query("SELECT * from ticket")
+    fun test_selectAllTickets(): List<TicketEntity>
 }
